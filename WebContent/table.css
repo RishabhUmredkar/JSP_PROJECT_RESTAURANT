@@ -1,0 +1,79 @@
+ <!-- Bootstrap CSS -->
+  <style>
+    body {
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+
+    .custom-container {
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    .custom-heading {
+      margin-bottom: 20px;
+    }
+
+    .custom-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .custom-th, .custom-td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #e9ecef;
+    }
+
+    .custom-thead {
+      background-color: #343a40;
+      color: #fff;
+    }
+
+    .custom-tbody tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+
+    .custom-actions {
+      white-space: nowrap;
+    }
+
+    .custom-actions a {
+      margin-right: 5px;
+    }
+
+    .custom-btn-fancy {
+      background-color: #ffbe33;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+    }
+
+    .custom-btn-fancy:hover {
+      transform: scale(1.1);
+    }
+
+    .custom-btn-danger {
+      background-color: #343a40;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+    }
+
+    .custom-btn-danger:hover {
+      background-color: #343a40;
+      transform: scale(1.1);
+    }
+  </style>
