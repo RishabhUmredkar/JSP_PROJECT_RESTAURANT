@@ -15,6 +15,10 @@ public class User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	public User(int id) {
+		super();
+		this.id = id;
+	}
 	public User(int id, String pass) {
 		super();
 		this.id = id;

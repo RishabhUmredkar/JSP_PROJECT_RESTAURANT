@@ -562,7 +562,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="images/f8.png" alt="">
+                  <img src="images/dosa.jpg" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>

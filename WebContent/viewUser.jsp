@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%><!DOCTYPE html>
+    <%@page import="UserModel.User"%>
+<%@page import="UserModel.UserDao"%>
+<%@ page import="java.util.List" %>
+
 <html>
 
 <head>
@@ -113,16 +117,25 @@
   </div>
 <br><br>
 
+<%
+    Cookie cookies[] = request.getCookies();
+    if (cookies != null) {
+        {
+    		String mail = cookies[0].getValue();
 
-	<% Cookie c[] = request.getCookies();
-	if(c!=null)
-	{
+    		
+    		if(!mail.equals("")|| mail!=null)
+    		{
 
-		String mail = c[0].getValue();
+    			 List<User> le=null;
+    				
+					
+					
+					le=new UserDao().getAllData();%>
+					
+					
 
-		
-		if(!mail.equals("")|| mail!=null)
-		{%>
+					
   <!-- book section -->
 <body class="custom-body">
   <div class="container">
@@ -131,44 +144,32 @@
       <table class="custom-table">
         <thead class="custom-thead">
           <tr>
+            <th class="custom-th">ID</th>
             <th class="custom-th">Name</th>
+            <th class="custom-th">Number</th>
             <th class="custom-th">Email</th>
-            <th class="custom-th">Age</th>
-            <th class="custom-th">Country</th>
+            <th class="custom-th">Gender</th>
+            <th class="custom-th">Date of Registration</th>
+			<th class="custom-th">PassWord</th>
             <th class="custom-th">Actions</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td class="custom-td">John Doe</td>
-            <td class="custom-td">johndoe@example.com</td>
-            <td class="custom-td">30</td>
-            <td class="custom-td">United States</td>
-            <td class="custom-actions">
-              <a href="#" class="custom-btn-fancy">Update</a>
-              <a href="#" class="custom-btn-danger">Delete</a>
-            </td>
-          </tr>
-          <tr>
-            <td class="custom-td">Jane Smith</td>
-            <td class="custom-td">janesmith@example.com</td>
-            <td class="custom-td">25</td>
-            <td class="custom-td">Canada</td>
-            <td class="custom-actions">
-              <a href="#" class="custom-btn-fancy">Update</a>
-              <a href="#" class="custom-btn-danger">Delete</a>
-            </td>
-          </tr>
-          <tr>
-            <td class="custom-td">Mark Johnson</td>
-            <td class="custom-td">markjohnson@example.com</td>
-            <td class="custom-td">35</td>
-            <td class="custom-td">Australia</td>
-            <td class="custom-actions">
-              <a href="#" class="custom-btn-fancy">Update</a>
-              <a href="#" class="custom-btn-danger">Delete</a>
-            </td>
-          </tr>
+        					<%for(User e:le){%>
+        
+        <tbody> <tr>
+    <td class="custom-td"><%= e.getId() %></td>
+    <td class="custom-td"><%= e.getName() %></td>
+    <td class="custom-td"><%= e.getNumber() %></td>
+    <td class="custom-td"><%= e.getEmail() %></td>
+    <td class="custom-td"><%= e.getGender() %></td>
+    <td class="custom-td"><%= e.getDate() %></td>
+    <td class="custom-td"><%= e.getPass() %></td>
+    <td class="custom-actions">
+      <a href="editUser.jsp?id=<%=e.getId() %>" class="custom-btn-fancy">Update</a>
+      <a href="deleteUser.jsp?id=<%=e.getId() %>" class="custom-btn-danger">Delete</a>
+    </td>
+  </tr>
+  <% } %>
         </tbody>
       </table>
     </div>
@@ -177,6 +178,15 @@
   </section>
    <br>
      <br>
+            
+            
+            
+            
+<%
+    		}}
+    }
+%>
+
   <!-- end book section -->
 
   <!-- footer section -->
