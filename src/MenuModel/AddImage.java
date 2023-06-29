@@ -5,24 +5,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.UUID;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
-
-
-import java.io.File;
-import java.io.IOException;
-import java.util.Collection;
-import java.util.Iterator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -35,108 +21,124 @@ import javax.servlet.http.Part;
 import MenuModel.Menu;
 import MenuModel.MenuDao;
 
+@MultipartConfig
 @WebServlet("/addimage")
-@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
-        maxFileSize = 1024 * 1024 * 10, // 10MB
-        maxRequestSize = 1024 * 1024 * 50) // 50MB
 public class AddImage extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
+       
+    public AddImage() {
+        super();
+    }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String Dishname = request.getParameter("Dishname");
-        String Description = request.getParameter("Description");
-        int Price = Integer.parseInt(request.getParameter("Price"));
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
 
-        Part imagePart = request.getPart("image");
-        String imageName = saveImage(imagePart); // Save the image and get the image name
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		
+		
+		
+		
 
-        Menu m = new Menu(Dishname, imageName, Description, Price);
-
-        int m1 = 0;
-		try {
-			m1 = new MenuDao().insert(m);
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+		System.out.println("In do post method of Add Image servlet.");
+		Part file=request.getPart("image");
+		
+		String imageFileName = null;
+		String contentDisposition = file.getHeader("content-disposition");
+		if (contentDisposition != null) {
+		    String[] elements = contentDisposition.split(";");
+		    for (String element : elements) {
+		        if (element.trim().startsWith("filename")) {
+		            imageFileName = element.substring(element.indexOf("=") + 1).trim().replace("\"", "");
+		            break;
+		        }
+		    }
+		}		
+		String uploadPath="E:/Coding/Java Project/JSP_PROJECT_RESTAURANT2.0/WebContent/images/"+imageFileName;
+		
+		System.out.println("Upload Path : "+uploadPath);
+		
+		//Uploading Image to a folder
+		
+		try
+		{
+		
+		FileOutputStream fos=new FileOutputStream(uploadPath);
+		InputStream is=file.getInputStream();
+		
+		byte[] data=new byte[is.available()];
+		is.read(data);
+		fos.write(data);
+		fos.close();
+		
+		}
+		
+		catch(Exception e)
+		{
 			e.printStackTrace();
 		}
 
-        if (m1 > 0) {
-            request.setAttribute("menu", m);
-            request.getRequestDispatcher("addimage.jsp").forward(request, response);
-        } else {
-            response.getWriter().println("Internal error!");
-        }
-    }
+		
 
-    private String saveImage(Part imagePart) throws IOException {
-        String uploadPath = "E:/Coding/Java Project/JSP_PROJECT_RESTAURANT2.0/WebContent/images/";
-        String fileName = extractFileName(imagePart);
+		
+		//**********************
+		
+		//getting database connection (jdbc code)
+		String Dishname = request.getParameter("Dishname");
+		String Description = request.getParameter("Description");
+		int Price = Integer.parseInt( request.getParameter("Price"));
+	
+		Connection connection;
+		try {
+			connection = MenuDao.getconnect();
+		} catch (ClassNotFoundException | SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try 
+		{
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant","root","abc123");
+			PreparedStatement stmt;
+			String query="insert into menu(Dishname,image,Description,Price) values(?,?,?,?)";
+			stmt=connection.prepareStatement(query);
+			stmt.setString(1,Dishname);
+			stmt.setString(2,imageFileName);
+			stmt.setString(3,Description);
+			stmt.setInt(4,Price);
+			int row=stmt.executeUpdate(); // it returns no of rows affected.
+			
+			if(row>0)
+			{
+				System.out.println("Image added into database successfully.");
+			}
+			
+			else
+			{
+				System.out.println("Failed to upload image.");
+			}
+			
+			
+		}
+		catch (Exception e)
+		{
+			System.out.println(e);
+		}
+		
+	}
 
-        File uploadDir = new File(uploadPath);
-        if (!uploadDir.exists()) {
-            uploadDir.mkdir();
-        }
+	private String extractFileName(Part file) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-        String filePath = uploadPath + File.separator + fileName;
-        imagePart.write(filePath);
-        return fileName;
-    }
+	private String getSubmittedFileName(Part file) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    private String extractFileName(Part part) {
-        String contentDisp = part.getHeader("content-disposition");
-        String[] tokens = contentDisp.split(";");
-        for (String token : tokens) {
-            if (token.trim().startsWith("filename")) {
-                return token.substring(token.indexOf("=") + 2, token.length() - 1);
-            }
-        }
-        return "";
-    }
 }
-
-	
-
-//}
-//else{
-//
-//	try {
-//		Connection con = GetConnection.Connect();
-//		
-//		PreparedStatement ps = con.prepareStatement(Insert_Image_Query);
-//		
-//		ps.setString(1, imageFileName);
-//		ps.setString(2, movie_name);
-//		ps.setString(3, release_date);
-//		
-//		int status = ps.executeUpdate();
-//		
-//		if(status>0)
-//		{
-//			
-//			response.sendRedirect("profileAdmin.jsp");
-//			out.print("<div class='alert alert-warning alert-dismissible fade show' role='alert'>"
-//					+ "<strong>Movie Added Successfully!</strong>"
-//					+ "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>"
-//					+ "</div>");
-//
-//		}
-//		
-//		else
-//		{
-//			RequestDispatcher dispatcher = request.getRequestDispatcher("profileAdmin.jsp");
-//			dispatcher.include(request,response);
-//			out.print("<div class='alert alert-warning alert-dismissible fade show' role='alert'>"
-//					+ "<strong>Failed to upload!</strong>"
-//					+ "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>"
-//					+ "</div>");
-//		}
-//		
-//	} catch (ClassNotFoundException | SQLException e) {
-//		// TODO Auto-generated catch block
-//		e.printStackTrace();
-//	}
-
-	
-
-

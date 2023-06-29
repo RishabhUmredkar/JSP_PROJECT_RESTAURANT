@@ -27,25 +27,24 @@ Dish        </h2>
       
         <div class="col-md-6">
           <div class="form_container">
-            <form action="dishServ.jsp">
-              <div>
-                <input type="text" name="Dishname" class="form-control" placeholder="Dish Name" />
-              </div>
+           <form action="addimage" method="post" enctype="multipart/form-data">
+    <div>
+        <input type="text" name="Dishname" class="form-control" placeholder="Dish Name" />
+    </div>
+    <div class="input-group">
+        <input type="file" name="image" class="form-control" required aria-label="Upload">
+    </div>
+    <div>
+        <textarea type="text" name="Description" class="form-control" placeholder="Description"></textarea>
+    </div>
+    <div>
+        <input type="number" name="Price" class="form-control" placeholder="Price Rs." />
+    </div>
+    <div class="btn_box">
+        <button>Login</button>
+    </div>
+</form>
 
-             
-	   <div class="input-group">
-		  <input type="file" class="form-control" name="image" required aria-label="Upload"></input>
-	   </div>
-              <div>
-                <textarea type="text" name="Description" class="form-control" placeholder="Description" ></textarea>
-              </div>
-              <div>
-                <input type="number" name="Price" class="form-control" placeholder="Price Rs." />
-              </div>
-              <div class="btn_box">
-                <button>Login</button>
-              </div>
-            </form>
           </div>
         </div>
         <div class="col-md-6">

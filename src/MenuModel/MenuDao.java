@@ -10,15 +10,15 @@ import java.sql.Statement;
 public class MenuDao {
 
 
-	String url = "jdbc:mysql://localhost:3306/restaurant";
-	String uname = "root";
-	String upass = "abc123";
-	String driver = "com.mysql.cj.jdbc.Driver";
+	static String url = "jdbc:mysql://localhost:3306/restaurant";
+	static String uname = "root";
+	static String upass = "abc123";
+	static String driver = "com.mysql.cj.jdbc.Driver";
 	
 	Connection con;
 	
 
-	private Connection getconnect() throws ClassNotFoundException, SQLException
+	static Connection getconnect() throws ClassNotFoundException, SQLException
 	{
 		Class.forName(driver);
 		Connection con = DriverManager.getConnection(url,uname,upass);
@@ -32,7 +32,7 @@ public class MenuDao {
 	    PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 	    ps.setString(1, m.getDishname());
 	    ps.setString(2, m.getImage());
-	    ps.setString(3, m.getDiscription());
+	    ps.setString(3, m.getDescription());
 	    ps.setInt(4, m.getPrice());
 
 	    int rowsInserted = ps.executeUpdate();

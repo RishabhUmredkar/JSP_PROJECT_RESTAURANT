@@ -4,7 +4,7 @@ public class Menu {
 	private int id;
 	private String Dishname;
 	private String image;
-	private String Discription;
+	private String Description;
 	private int Price;
 	
 	public Menu() {
@@ -23,20 +23,20 @@ public class Menu {
 		this.Dishname = Dishname;
 	}
 
-	public Menu(String Dishname, String image, String Discription, int Price) {
+	public Menu(String Dishname, String image, String Description, int Price) {
 		super();
 		this.Dishname = Dishname;
 		this.image = image;
-		this.Discription = Discription;
+		this.Description = Description;
 		this.Price = Price;
 	}
 
-	public Menu(int id, String Dishname, String image, String Discription, int Price) {
+	public Menu(int id, String Dishname, String image, String Description, int Price) {
 		super();
 		this.id = id;
 		this.Dishname = Dishname;
 		this.image = image;
-		this.Discription = Discription;
+		this.Description = Description;
 		this.Price = Price;
 	}
 
@@ -66,12 +66,12 @@ public class Menu {
 		this.image = image;
 	}
 
-	public String getDiscription() {
-		return Discription;
+	public String getDescription() {
+		return Description;
 	}
 
-	public void setDiscription(String Discription) {
-		this.Discription = Discription;
+	public void setDiscription(String Description) {
+		this.Description = Description;
 	}
 
 	public int getPrice() {
