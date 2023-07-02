@@ -6,11 +6,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
+<body><%
+Cookie c = new Cookie("email", "");
+c.setMaxAge(0);
+response.addCookie(c);
 
-		<% Cookie c = new Cookie("email", "");
-		c.setMaxAge(0);
-		response.addCookie(c);
+request.getRequestDispatcher("index.jsp").include(request, response);
 %>
+
+
+LogOut Page
 </body>
 </html>

@@ -16,8 +16,6 @@
     </div>
 <%@ include file="header.jsp" %>
 
-
-
   <section class="book_section layout_padding">
     <div class="container">
       <div class="heading_container" >
@@ -27,7 +25,7 @@ Admin        </h2>
       <div class="row">
         <div class="col-md-6">
           <div class="form_container">
-            <form action="adminserv">
+            <form action="admin.jsp">
               <div>
                 <input type="text" name="name" class="form-control" placeholder="Your Name" />
               </div>

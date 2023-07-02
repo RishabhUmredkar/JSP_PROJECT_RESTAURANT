@@ -41,7 +41,7 @@ Dish        </h2>
         <input type="number" name="Price" class="form-control" placeholder="Price Rs." />
     </div>
     <div class="btn_box">
-        <button>Login</button>
+        <button>Add</button>
     </div>
 </form>
 

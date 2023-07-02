@@ -117,15 +117,16 @@
   </div>
 <br><br>
 
-<%
-    Cookie cookies[] = request.getCookies();
-    if (cookies != null) {
-        {
-    		String mail = cookies[0].getValue();
+<%	
+Cookie c[] = request.getCookies();
+if(c!=null)
+{
 
-    		
-    		if(!mail.equals("")|| mail!=null)
-    		{
+	String email = c[0].getValue();
+
+	
+	if(!email.equals("")|| email!=null)
+	{
 
     			 List<User> le=null;
     				
@@ -181,11 +182,14 @@
             
             
             
-            
-<%
-    		}}
-    }
+         <%  }}else{%>
+            		
+            		<%
+    request.getRequestDispatcher("index.jsp").include(request, response);}
 %>
+
+
+    
 
   <!-- end book section -->
 

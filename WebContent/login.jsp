@@ -27,7 +27,7 @@ Login        </h2>
       
         <div class="col-md-6">
           <div class="form_container">
-            <form action="loginuser">
+            <form action="loginUser.jsp">
               <div>
                 <input type="text" name="name" class="form-control" placeholder="Your Name" />
               </div>
