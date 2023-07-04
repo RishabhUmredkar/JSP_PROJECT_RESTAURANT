@@ -89,7 +89,7 @@
                     </h6>
                     <a href="deleteMenu.jsp?id=<%=e.getId() %>">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-  <path d="M21 8h-1v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8H3a1 1 0 0 1 0-2h2V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v2h2a1 1 0 0 1 0 2zm-4 0H7v11h10zm-8-2h2v9H9zm4 0h2v9h-2z" fill="#FF0000" />
+  <path d="M21 8h-1v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8H3a1 1 0 0 1 0-2h2V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v2h2a1 1 0 0 1 0 2zm-4 0H7v11h10zm-8-2h2v9H9zm4 0h2v9h-2z" fill="#f1f2f3" />
 </svg>
 
                     </a>

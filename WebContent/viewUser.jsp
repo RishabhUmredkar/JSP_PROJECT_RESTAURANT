@@ -5,7 +5,6 @@
 <%@ page import="java.util.List" %>
 
 <html>
-
 <head>
   <!-- Basic -->
   <meta charset="utf-8" />
@@ -168,20 +167,20 @@ if(c!=null)
     <td class="custom-actions">
       <a href="editUser.jsp?id=<%=e.getId() %>" class="custom-btn-fancy">Update</a>
       <a href="deleteUser.jsp?id=<%=e.getId() %>" class="custom-btn-danger">Delete</a>
+
+   
     </td>
   </tr>
   <% } %>
+  
         </tbody>
       </table>
     </div>
   </div>
-    
+      
   </section>
    <br>
-     <br>
-            
-            
-            
+     <br>      
          <%  }}else{%>
             		
             		<%

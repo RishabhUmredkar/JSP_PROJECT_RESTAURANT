@@ -28,29 +28,22 @@ public class addMenuDao {
 		Connection con = DriverManager.getConnection(url,uname,upass);
 		return con;
 		
-	}
-	
-public int insertMenuAdd(Menu m) throws ClassNotFoundException, SQLException {
+	}	
+
+public int insertMenuAdd(menuAdd u) throws ClassNotFoundException, SQLException {
 	   // String sql = "INSERT INTO menu(Dishname, image, Description, Price) VALUES (?, ?, ?, ?)";
 	    con = getconnect();
-	    PreparedStatement ps = con.prepareStatement( "INSERT INTO menuadd(id,Dishname, image, Description, Price) VALUES (?,?, ?, ?)");
-	    
-	    ps.setInt(1, m.getId());
-	    ps.setString(2, m.getDishname());
-	    ps.setString(3, m.getImage());
-	    ps.setString(4, m.getDescription());
+	    PreparedStatement ps = con.prepareStatement( "INSERT INTO menuadd(id,email,Dishname, image, Description,Price) VALUES (?,?,?,?,?,?)");
+	    ps.setInt(1, u.getId());
+	    ps.setString(2, u.getemail());
+	    ps.setString(3, u.getDishname());
+	    ps.setString(4, u.getImage());
+	    ps.setString(5, u.getDescription());
+	    ps.setInt(6, u.getPrice());
 
-	    int rowsInserted = ps.executeUpdate();
-	    int generatedId = -1;
-	    if (rowsInserted > 0) {
-	        ResultSet rs = ps.getGeneratedKeys();
-	        if (rs.next()) {
-	            generatedId = rs.getInt(1); // Retrieve the auto-generated ID
-	        }
-	    }
-
-	    con.close();
-	    return generatedId;
+		int m1 =ps.executeUpdate();
+		con.close();
+		return m1;
 	}
 	
 }

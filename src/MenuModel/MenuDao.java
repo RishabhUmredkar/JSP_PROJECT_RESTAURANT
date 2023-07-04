@@ -89,22 +89,24 @@ public class MenuDao {
 	}
 
 	
-	
-
-public int insertMenuAdd(Menu u) throws ClassNotFoundException, SQLException {
-	   // String sql = "INSERT INTO menu(Dishname, image, Description, Price) VALUES (?, ?, ?, ?)";
-	    con = getconnect();
-	    PreparedStatement ps = con.prepareStatement( "INSERT INTO menuadd(id,Dishname, image, Description) VALUES (?, ?,?,?)");
-	    ps.setInt(1, u.getId());
-	    ps.setString(2, u.getDishname());
-	    ps.setString(3, u.getImage());
-	    ps.setString(4, u.getDescription());
+	public Menu getOneDish(int id) throws ClassNotFoundException, SQLException{
+	 Connection con=getconnect();
+	 PreparedStatement ps = con.prepareStatement("SELECT * FROM menu WHERE id=?");
+     Menu m = new Menu();
+     ps.setInt(1, id);
+     ResultSet rs = ps.executeQuery();
+     while(rs.next()){
+    	 m.setId(rs.getInt(1));
+    	 m.setDishname(rs.getString(2));
+    	 m.setImage(rs.getString(3));
+    	 m.setDiscription(rs.getString(4));
+    	 m.setPrice(rs.getInt(5));
+     }
+     
 		
-		int m1 =ps.executeUpdate();
-		con.close();
-		return m1;
+		return m;
+		
 	}
-	
-
 		
 }
+

@@ -17,13 +17,13 @@
 
     String email = request.getParameter("email");
     String pass = request.getParameter("pass");
+	session.setAttribute("email", email);
 
     User u = new User(email, pass);
-
     out.println("user data: " + u);
-    Cookie c = new Cookie("email", email);
-    response.addCookie(c);
-
+   
+		
+	
     boolean a = false;
 
    

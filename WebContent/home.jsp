@@ -209,15 +209,21 @@ alt="">
       </div>
 
               <%
-    String email = request.getParameter("email");
-    String pass = request.getParameter("pass");
+              
+              
+
+
 
     
               List<Menu> le=null;
 				
 				
 				
-				le=new MenuDao().getAllData();%>
+				le=new MenuDao().getAllData();
+				String email=(String)session.getAttribute("email");
+				out.print(email);
+				
+				%>
 				
 			
       <div class="filters-content">

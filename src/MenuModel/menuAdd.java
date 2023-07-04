@@ -2,6 +2,7 @@ package MenuModel;
 
 public class menuAdd {
 	private int id;
+	private String email;
 	private String Dishname;
 	private String image;
 	private String Description;
@@ -23,21 +24,32 @@ public class menuAdd {
 		this.Dishname = Dishname;
 	}
 
-	public menuAdd(String Dishname, String image, String Description, int Price) {
+	public menuAdd(String email,String Dishname, String image, String Description, int Price) {
 		super();
+		this.email = email;
 		this.Dishname = Dishname;
 		this.image = image;
 		this.Description = Description;
 		this.Price = Price;
 	}
 
-	public menuAdd(int id, String Dishname, String image, String Description, int Price) {
+	public menuAdd(int id, String email,String Dishname, String image, String Description, int Price) {
 		super();
 		this.id = id;
+		this.email = email;
 		this.Dishname = Dishname;
 		this.image = image;
 		this.Description = Description;
 		this.Price = Price;
+	}
+
+	public menuAdd(int id, String email,String Dishname, String image, String Description) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.Dishname = Dishname;
+		this.image = image;
+		this.Description = Description;
 	}
 
 	
@@ -48,6 +60,14 @@ public class menuAdd {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getemail() {
+		return email;
+	}
+
+	public void setemail(String email) {
+		this.email = email;
 	}
 
 	public String getDishname() {

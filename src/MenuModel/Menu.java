@@ -37,6 +37,8 @@ public class Menu {
 		this.Dishname = Dishname;
 		this.image = image;
 		this.Description = Description;
+		this.Price = Price;
+
 	}
 	public Menu(int id, String Dishname, String image, String Description) {
 		super();
@@ -44,7 +46,6 @@ public class Menu {
 		this.Dishname = Dishname;
 		this.image = image;
 		this.Description = Description;
-		this.Price = Price;
 	}
 
 	
