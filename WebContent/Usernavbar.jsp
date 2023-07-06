@@ -48,6 +48,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Userabout.jsp">About</a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link" href="Userorder.jsp">My Order</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Userbook.jsp">Book Table</a>

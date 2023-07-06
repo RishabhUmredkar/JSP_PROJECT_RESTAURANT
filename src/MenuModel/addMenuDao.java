@@ -80,5 +80,25 @@ public int delete(int id) throws ClassNotFoundException, SQLException {
 	return  a;
 }
 
+
+
+public Menu getOneDish(String email) throws ClassNotFoundException, SQLException {
+    Connection con = getconnect();
+    PreparedStatement ps = con.prepareStatement("SELECT * FROM menu WHERE email=?");
+    Menu m = new Menu();
+    ps.setString(1, email);
+    ResultSet rs = ps.executeQuery();
+    while (rs.next()) {
+        m.setId(rs.getInt(1));
+        m.setDishname(rs.getString(2));
+        m.setImage(rs.getString(3));
+        m.setDiscription(rs.getString(4));
+        m.setPrice(rs.getInt(5));
+    }
+
+    return m;
+}
+
+
 	
 }
