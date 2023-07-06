@@ -31,10 +31,10 @@
         out.println("Value of a = " + a);
    
     if (a) {
-        response.sendRedirect("home.jsp");
+        response.sendRedirect("Usermenu.jsp");
     } else {
         out.println("Wrong Name and Password!");
-        request.getRequestDispatcher("index.jsp").include(request, response);
+        response.sendRedirect("index.jsp");
     }
 %>
 </body>

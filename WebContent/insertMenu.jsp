@@ -52,7 +52,7 @@ ud.insertMenuAdd(u);
 if(ud!=null)
 {
 	System.out.println("Image added into database successfully.");
-    request.getRequestDispatcher("menu.jsp").forward(request, response);
+	response.sendRedirect("Usermenu.jsp");
 
 }
     

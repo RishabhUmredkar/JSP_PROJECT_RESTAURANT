@@ -1,6 +1,6 @@
 
-    <%@page import="MenuModel.Menu"%>
-<%@page import="MenuModel.MenuDao"%>
+    <%@page import="MenuModel.menuAdd"%>
+<%@page import="MenuModel.addMenuDao"%>
 <%@ page import="java.util.List" %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -24,8 +24,8 @@ if (cookies != null) {
 		{
 int id = Integer.parseInt(request.getParameter("id"));
 
-Menu u =new Menu(id);		
-MenuDao ud = new MenuDao();
+menuAdd u =new menuAdd(id);		
+addMenuDao ud = new addMenuDao();
 
 
 		ud.delete(id);

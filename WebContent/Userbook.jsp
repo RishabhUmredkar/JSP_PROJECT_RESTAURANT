@@ -26,7 +26,7 @@
       <img src="images/hero-bg.jpg" alt="">
     </div>
     <!-- header section strats -->
-<%@ include file="navbar.jsp" %>
+<%@ include file="Usernavbar.jsp" %>
 
     <!-- end header section -->
   </div>

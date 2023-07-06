@@ -14,7 +14,7 @@
     <div class="bg-box" style="width: 100%;height: 62%;-o-object-fit: cover;object-fit: cover;">
       <img src="images/hero-bg.jpg" alt="">
     </div>
-<%@ include file="header.jsp" %>
+<%@ include file="Indexheader.jsp" %>
 
 
 

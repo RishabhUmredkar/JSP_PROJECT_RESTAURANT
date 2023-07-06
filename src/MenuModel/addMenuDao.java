@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import MenuModel.Menu;;
+import MenuModel.menuAdd;
 
 public class addMenuDao {
 
@@ -45,5 +45,40 @@ public int insertMenuAdd(menuAdd u) throws ClassNotFoundException, SQLException 
 		con.close();
 		return m1;
 	}
+
+
+
+public List<menuAdd> getAllData() throws ClassNotFoundException, SQLException {
+
+	String sql="SELECT * FROM  menuadd ";
+	con = getconnect();
+	Statement st=con.createStatement();
+	ResultSet rs=st.executeQuery(sql);
+	
+	List<menuAdd> le=new ArrayList<menuAdd>();
+	
+	
+	while(rs.next())
+	{
+		menuAdd e=new menuAdd(rs.getInt(1),rs.getString(2), rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6));
+		
+		le.add(e);
+	}
+	
+	
+	return le;
+}
+
+
+public int delete(int id) throws ClassNotFoundException, SQLException {
+	Connection con=getconnect();
+	PreparedStatement ps=con.prepareStatement("delete from menuAdd where id=?");
+	ps.setInt(1,id);
+
+	int a=ps.executeUpdate();
+	con.close();
+	return  a;
+}
+
 	
 }

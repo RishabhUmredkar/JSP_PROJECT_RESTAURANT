@@ -25,22 +25,14 @@ String pass = request.getParameter("pass");
 
         int a = new UserDao().update(u);
         if (a > 0) {
+        	response.sendRedirect("viewUser.jsp");
 %>
  	
  	
-			<jsp:forward page="viewUser.jsp">
-			<jsp:param value="<%=email%>" name="email"/>
-			<jsp:param value="<%=pass%>" name="pass"/>
-			</jsp:forward>	
-				
 		<%
 		
  	
-        }  else%>			<jsp:forward page="viewUser.jsp">
-        
-<jsp:param value="<%=email%>" name="email"/>
-			<jsp:param value="<%=pass%>" name="pass"/>
-			</jsp:forward>	
+        }  else%>	response.sendRedirect("index.jsp");			
 				
 </body>
 </html>

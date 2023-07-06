@@ -40,25 +40,18 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav  mx-auto ">
-          
-          <li class="nav-item">
-            <a class="nav-link" href="menu.jsp">Menu</a>
+          <li class="nav-item ">
+            <a class="nav-link" href="index.jsp">Admin</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="about.jsp">About</a>
+          <li class="nav-item ">
+            <a class="nav-link" href="login.jsp">Login</a>
           </li>
-            <li class="nav-item">
-            <a class="nav-link" href="viewUser.jsp">User</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="order.jsp">Oder</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="addDish.jsp">Dish</a>
+          <li class="nav-item ">
+            <a class="nav-link" href="registerUser.jsp">Register</a>
           </li>
         </ul>
         <div class="user_option">
-          <a href="viewUser.jsp" class="user_link">
+          <a href="" class="user_link">
             <i class="fa fa-user" aria-hidden="true"></i>
           </a>
           <a class="cart_link" href="#">

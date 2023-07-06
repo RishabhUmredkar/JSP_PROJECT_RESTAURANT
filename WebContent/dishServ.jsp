@@ -2,7 +2,6 @@
     pageEncoding="ISO-8859-1"%>
     <%@page import="MenuModel.Menu"%>
 <%@page import="MenuModel.MenuDao"%>
-<%@page import="AdminController.AdminServ"%>
 <%@page import="MenuModel.AddImage"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -27,10 +26,11 @@ int m1 = 0;
 
 if (m1 > 0) {
     out.print("Menu item added successfully!");
-    request.getRequestDispatcher("addimage").forward(request, response);
+    response.sendRedirect("addimage");
 } else {
     out.print("Internal error!");
-    request.getRequestDispatcher("index.html").include(request, response);
+    response.sendRedirect("index.jsp");
+
 }
 %>
 

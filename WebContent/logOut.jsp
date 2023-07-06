@@ -11,7 +11,7 @@ Cookie c = new Cookie("email", "");
 c.setMaxAge(0);
 response.addCookie(c);
 
-request.getRequestDispatcher("index.jsp").include(request, response);
+response.sendRedirect("index.jsp");
 %>
 
 

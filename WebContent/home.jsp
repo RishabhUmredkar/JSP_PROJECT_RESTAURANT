@@ -35,7 +35,7 @@ alt="">
     </div>
 
     <!-- header section strats -->
-    <%@ include file="header.jsp" %>
+    <%@ include file="Usernavbar.jsp" %>
     
     
     
@@ -200,77 +200,6 @@ alt="">
   <!-- end offer section -->
 
   <!-- food section -->
- <section class="food_section layout_padding">
-    <div class="container">
-      <div class="heading_container heading_center">
-        <h2>
-          Our Menu
-        </h2>
-      </div>
-
-              <%
-              
-              
-
-
-
-    
-              List<Menu> le=null;
-				
-				
-				
-				le=new MenuDao().getAllData();
-				String email=(String)session.getAttribute("email");
-				out.print(email);
-				
-				%>
-				
-			
-      <div class="filters-content">
-        <div class="row grid">
-        <%for(Menu e:le){%>
-			
-          <div class="col-sm-6 col-lg-4 all pizza">
-            <div class="box">
-              <div>
-          
-		
-	
-                <div class="img-box">
-                  <img src="images/<%=e.getImage()%>" alt="Check This out">
-                </div>
-                <div class="detail-box">
-                  <h5>
-					<%= e.getId() %>.  <%= e.getDishname() %>    </h5>
-                  <p>	<%= e.getDescription() %>
-                  </p>
-                  <div class="options">
-                    <h6>
-                      Rs. <%= e.getPrice() %>
-                    </h6>
-                    <a href="insertMenu.jsp?id=<%=e.getId() %>">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="color: white; font-weight: bold; font-size: 24px;">
-  <path fill="currentColor" d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-                    <% }
-%>
-
-            </div>
-          </div>
-        </div>
-      </div>
-   
-    </div>
-  </section>
-
   <!-- end food section -->
 
   <!-- about section -->
@@ -309,64 +238,6 @@ alt="">
   <!-- end about section -->
 
   <!-- book section -->
-  <section class="book_section layout_padding">
-    <div class="container">
-      <div class="heading_container">
-        <h2>
-          Book A Table
-        </h2>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form_container">
-            <form action="">
-              <div>
-                <input type="text" class="form-control" placeholder="Your Name" />
-              </div>
-              <div>
-                <input type="text" class="form-control" placeholder="Phone Number" />
-              </div>
-              <div>
-                <input type="email" class="form-control" placeholder="Your Email" />
-              </div>
-              <div>
-                <select class="form-control nice-select wide">
-                  <option value="" disabled selected>
-                    How many persons?
-                  </option>
-                  <option value="">
-                    2
-                  </option>
-                  <option value="">
-                    3
-                  </option>
-                  <option value="">
-                    4
-                  </option>
-                  <option value="">
-                    5
-                  </option>
-                </select>
-              </div>
-              <div>
-                <input type="date" class="form-control">
-              </div>
-              <div class="btn_box">
-                <button>
-                  Book Now
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="map_container ">
-            <div id="googleMap"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
   <!-- end book section -->
 
   <!-- client section -->
@@ -405,10 +276,10 @@ alt="">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
                 </p>
                 <h6>
-                  Mike Hamell
+                  Billu Nimje
                 </h6>
                 <p>
-                  magna aliqua
+                  Billu Nimje
                 </p>
               </div>
               <div class="img-box">

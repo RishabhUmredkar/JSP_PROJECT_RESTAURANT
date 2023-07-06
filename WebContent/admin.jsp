@@ -24,7 +24,8 @@
 
 
 <%
-    request.getRequestDispatcher("viewUser.jsp").include(request, response);
+response.sendRedirect("viewUser.jsp");
+
 %>
 
 <%}else{%>

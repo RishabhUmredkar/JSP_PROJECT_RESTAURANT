@@ -115,7 +115,7 @@ public class AddImage extends HttpServlet {
 			if(row>0)
 			{
 				System.out.println("Image added into database successfully.");
-			    request.getRequestDispatcher("menu.jsp").forward(request, response);
+			    response.sendRedirect("menu.jsp");
 
 			}
 			

@@ -32,7 +32,7 @@
       <img src="images/hero-bg.jpg" alt="">
     </div>
     <!-- header section strats -->
-<%@ include file="navbar.jsp" %>
+<%@ include file="Usernavbar.jsp" %>
 
     <!-- end header section -->
   </div>
@@ -40,8 +40,7 @@
 
 
   <!-- food section -->
-
-  <section class="food_section layout_padding">
+<section class="food_section layout_padding">
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
@@ -49,20 +48,22 @@
         </h2>
       </div>
 
-      <ul class="filters_menu">
-        <li class="active" data-filter="*">All</li>
-        <li data-filter=".burger">Burger</li>
-        <li data-filter=".pizza">Pizza</li>
-        <li data-filter=".pasta">Pasta</li>
-        <li data-filter=".fries">Fries</li>
-      </ul>
-    
               <%
+              
+              
+
+
+
+    
               List<Menu> le=null;
 				
 				
 				
-				le=new MenuDao().getAllData();%>
+				le=new MenuDao().getAllData();
+				String email=(String)session.getAttribute("email");
+				out.print(email);
+				
+				%>
 				
 			
       <div class="filters-content">
@@ -76,7 +77,7 @@
 		
 	
                 <div class="img-box">
-                  <img src="images/<%=e.getImage()%>" alt="">
+                  <img src="images/<%=e.getImage()%>" alt="Check This out">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -87,10 +88,11 @@
                     <h6>
                       Rs. <%= e.getPrice() %>
                     </h6>
-                    <a href="deleteMenu.jsp?id=<%=e.getId() %>">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-  <path d="M21 8h-1v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8H3a1 1 0 0 1 0-2h2V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v2h2a1 1 0 0 1 0 2zm-4 0H7v11h10zm-8-2h2v9H9zm4 0h2v9h-2z" fill="#f1f2f3" />
+                    <a href="insertMenu.jsp?id=<%=e.getId() %>">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="color: white; font-weight: bold; font-size: 24px;">
+  <path fill="currentColor" d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
+
 
                     </a>
                   </div>
@@ -98,18 +100,14 @@
               </div>
             </div>
           </div>
-                  		
-        				            
-        <%} 
+                    <% }
 %>
 
             </div>
           </div>
         </div>
       </div>
-      <div class="btn-box">
-        <a href="addDish.jsp">Add Dishes</a>
-      </div>
+   
     </div>
   </section>
 

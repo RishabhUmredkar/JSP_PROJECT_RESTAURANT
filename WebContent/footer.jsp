@@ -18,24 +18,25 @@
               Contact Us
             </h4>
             <div class="contact_link_box">
-              <a href="">
-                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                <span>
-                  Location
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-                <span>
-                  Call +91 8669804213
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-                <span>
-                  demo@gmail.com
-                </span>
-              </a>
+              <a href="https://www.google.com/maps/@21.1572333,79.1000937,21z?authuser=0&entry=ttu" target="blank">
+  <i class="fa fa-map-marker" aria-hidden="true"></i>
+  <span>
+    Location
+  </span>
+</a>
+<a href="tel:+918669804213" target="blank">
+  <i class="fa fa-phone" aria-hidden="true"></i>
+  <span>
+    Call +91 8669804213
+  </span>
+</a>
+<a href="mailto:rishabhumredkar0@gmail.com" target="blank">
+  <i class="fa fa-envelope" aria-hidden="true"></i>
+  <span>
+    rishabhumredkar0@gmail.com
+  </span>
+</a>
+
             </div>
           </div>
         </div>
@@ -48,21 +49,20 @@
               Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
             </p>
             <div class="footer_social">
-              <a href="">
+              <a href="https://www.facebook.com/rishabh.umredkar.3" target="blank">
                 <i class="fa fa-facebook" aria-hidden="true"></i>
               </a>
-              <a href="">
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-              </a>
-              <a href="">
+              <a href="https://www.linkedin.com/in/rishabh-umredkar-268a9a269/" target="blank">
                 <i class="fa fa-linkedin" aria-hidden="true"></i>
               </a>
-              <a href="">
+              <a href="https://www.instagram.com/rishabh_umredkar/" target = "blank">
                 <i class="fa fa-instagram" aria-hidden="true"></i>
               </a>
-              <a href="">
-                <i class="fa fa-pinterest" aria-hidden="true"></i>
-              </a>
+           
+            <a href="https://github.com/RishabhUmredkar" target="_blank">
+  <i class="fa fa-github" aria-hidden="true"></i>
+</a>
+
             </div>
           </div>
         </div>
@@ -82,8 +82,8 @@
         <p>
           &copy; <span id="displayYear"></span> All Rights Reserved By
           <a href="https://html.design/">Free Html Templates</a><br><br>
-          &copy; <span id="displayYear"></span> Distributed By
-          <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
+          &copy; <span id="displayYear"></span> Designed By
+          <a href="https://github.com/RishabhUmredkar" target="_blank">Rishabh</a>
         </p>
       </div>
     </div>

@@ -26,7 +26,7 @@
     <div class="bg-box">
       <img src="images/hero-bg.jpg" alt="">
     </div>
-<%@ include file="navbar.jsp" %>
+<%@ include file="Usernavbar.jsp" %>
    
     <!-- end header section -->
   </div>

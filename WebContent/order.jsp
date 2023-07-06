@@ -1,9 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%><!DOCTYPE html>
     <%@page import="UserModel.User"%>
-<%@page import="UserModel.UserDao"%>
+    <%@page import="UserModel.UserDao"%>
+    <%@page import="MenuModel.menuAdd"%>
+    <%@page import="MenuModel.Menu"%>
+   <%@page import="MenuModel.AddImage"%>
+   <%@page import="MenuModel.menuAdd"%>
+   
+<%@page import="MenuModel.MenuDao"%>
+<%@page import="MenuModel.addMenuDao"%>
 <%@ page import="java.util.List" %>
-
 <html>
 <head>
   <!-- Basic -->
@@ -117,6 +123,45 @@
 <br><br>
 
 <%	
+/* 
+Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "abc123");
+
+// Create a statement
+Statement statement = connection.createStatement();
+
+// Set the pagination parameters
+int pageSize = 10; // Number of records per page
+int currentPage = 1; // Current page number
+
+// Calculate the offset for pagination
+int offset = (currentPage - 1) * pageSize;
+
+// Execute the query with pagination
+String query = "SELECT * FROM menuadd LIMIT " + offset + ", " + pageSize;
+ResultSet resultSet = statement.executeQuery(query);
+
+// Get the column count by using ResultSetMetaData
+ResultSetMetaData metaData = resultSet.getMetaData();
+int columnCount = metaData.getColumnCount();
+
+// Output the column count
+System.out.println("Number of columns: " + columnCount);
+
+// Process the result set
+while (resultSet.next()) {
+    // Retrieve the column values
+    for (int i = 1; i <= columnCount; i++) {
+        System.out.print(resultSet.getString(i) + "\t");
+    }
+    System.out.println();
+}
+
+// Clean up resources
+resultSet.close();
+statement.close();
+connection.close();
+
+ */
 Cookie c[] = request.getCookies();
 if(c!=null)
 {
@@ -127,11 +172,11 @@ if(c!=null)
 	if(!email.equals("")|| email!=null)
 	{
 
-    			 List<User> le=null;
+    			 List<menuAdd> le=null;
     				
 					
 					
-					le=new UserDao().getAllData();%>
+					le=new addMenuDao().getAllData();%>
 					
 					
 
@@ -145,28 +190,21 @@ if(c!=null)
         <thead class="custom-thead">
           <tr>
             <th class="custom-th">ID</th>
-            <th class="custom-th">Name</th>
-            <th class="custom-th">Number</th>
             <th class="custom-th">Email</th>
-            <th class="custom-th">Gender</th>
-            <th class="custom-th">Date of Registration</th>
-			<th class="custom-th">PassWord</th>
-            <th class="custom-th">Actions</th>
+            <th class="custom-th">Dish Name</th>
+            <th class="custom-th">Price</th>
+            <th class="custom-th">Delete </th>
           </tr>
         </thead>
-        					<%for(User e:le){%>
+        					<%for(menuAdd e:le){%>
         
         <tbody> <tr>
-    <td class="custom-td"><%= e.getId() %></td>
-    <td class="custom-td"><%= e.getName() %></td>
-    <td class="custom-td"><%= e.getNumber() %></td>
-    <td class="custom-td"><%= e.getEmail() %></td>
-    <td class="custom-td"><%= e.getGender() %></td>
-    <td class="custom-td"><%= e.getDate() %></td>
-    <td class="custom-td"><%= e.getPass() %></td>
+     <td class="custom-td"><%= e.getId() %></td>
+    <td class="custom-td"><%= e.getemail()%></td>
+    <td class="custom-td"><%= e.getDishname()%></td>
+    <td class="custom-td"><%= e.getPrice() %></td>
     <td class="custom-actions">
-      <a href="editUser.jsp?id=<%=e.getId() %>" class="custom-btn-fancy">Update</a>
-      <a href="deleteUser.jsp?id=<%=e.getId() %>" class="custom-btn-danger">Delete</a>
+      <a href="deleteDish.jsp?id=<%=e.getId() %>" class="custom-btn-fancy">Delete</a>
 
    
     </td>
