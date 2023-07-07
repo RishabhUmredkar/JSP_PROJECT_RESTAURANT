@@ -101,6 +101,10 @@
       background-color: #343a40;
       transform: scale(1.1);
     }
+    
+  .custom-btn-green {
+    background-color: green;
+  }
   </style>
   <title> Feane </title>
 
@@ -123,82 +127,96 @@
 <br><br>
 
 
-<%-- 
-<% 
-Cookie cookies[] = request.getCookies();
-if (cookies != null) {
-    {
-		String mail = cookies[0].getValue();
+  <%-- Check if the user is logged in and retrieve the email --%>
+  <% String email = (String) session.getAttribute("email");
+  if (email != null && !email.isEmpty()) { %>
 
-		
-		if(!mail.equals("")|| mail!=null)
-		{
-int id = Integer.parseInt(request.getParameter("id"));
-			System.out.println(id);
-			User u = null;
-			int a=0;
-			
-				u = new UserDao().getOneUser(id);
+    <%-- Retrieve the list of menu items for the user --%>
+    <% List<menuAdd> le = new addMenuDao().getOneDish(email); %>
 
+    <%-- Display the table of user details and payment functionality --%>
+    <section class="food_section layout_padding">
+      <div class="container">
+        <div class="heading_container heading_center">
+          <h2>Our Menu</h2>
+        </div>
+        <div class="custom-container">
+          <h2 class="custom-heading">User Details</h2>
+          <table class="custom-table">
+            <thead class="custom-thead">
+              <tr>
+                <th class="custom-th">ID</th>
+                <th class="custom-th">Email</th>
+                <th class="custom-th">Dish Name</th>
+                <th class="custom-th">Price</th>
+                <th class="custom-th">Order Price</th>
+                <th class="custom-th">Delete</th>
+                <th class="custom-th">Pay</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% 
+              int existingPrice = 0;
+              for (menuAdd e : le) {
+                existingPrice += e.getPrice();
+              %>
+              <tr>
+                <td class="custom-td"><%= e.getId() %></td>
+                <td class="custom-td"><%= e.getemail() %></td>
+                <td class="custom-td"><%= e.getDishname() %></td>
+                <td class="custom-td"><%= e.getPrice() %></td>
+                <td class="custom-td"><%= existingPrice %></td>
+                <td class="custom-actions">
+                  <a href="deleteDish.jsp?id=<%= e.getId() %>" class="custom-btn-fancy">Delete</a>
+                </td>
+                <td class="custom-actions">
+  <button class="custom-btn-fancy custom-btn-green" onclick="showQR('<%= e.getId() %>')">Pay</button>
+</td>
 
-			 if(u!=null){%>
-			  --%>
-			 
-  <!-- food section -->
-<section class="food_section layout_padding">
-    <div class="container">
-      <div class="heading_container heading_center">
-        <h2>
-          Our Menu
-        </h2>
+              </tr>
+              <% 
+              }
+              %>
+            </tbody>
+          </table>
+        </div>
       </div>
-<% 
-String email=(String)session.getAttribute("email");
-out.print(email);
+    </section>
 
-
-
-List<menuAdd> le=null;
-	
-	le  = new addMenuDao().getOneDish(email);%>
-	 
-  <!-- book section -->
-<body class="custom-body">
-  <div class="container">
-    <div class="custom-container">
-      <h2 class="custom-heading">User Details</h2>
-      <table class="custom-table">
-        <thead class="custom-thead">
-          <tr>
-            <th class="custom-th">ID</th>
-            <th class="custom-th">Email</th>
-            <th class="custom-th">Dish Name</th>
-            <th class="custom-th">Price</th>
-            <th class="custom-th">Delete </th>
-          </tr>
-        </thead>
-        <%for(menuAdd e:le){%>
-        <tbody> <tr>
-     <td class="custom-td"><%= e.getId() %></td>
-    <td class="custom-td"><%= e.getemail()%></td>
-    <td class="custom-td"><%= e.getDishname()%></td>
-    <td class="custom-td"><%= e.getPrice() %></td>
-    <td class="custom-actions">
-      <a href="deleteDish.jsp?id=<%=e.getId() %>" class="custom-btn-fancy">Delete</a>
-
-   
-    </td>
-  </tr>
-  
-        </tbody> 
-          <%} %>
-      </table>
+    <!-- Modal for displaying QR code -->
+    <div id="paymentModal" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+<img id="qrCodeImage" src="/JSP_PROJECT_RESTAURANT2.0/WebContent/images/QR Code.jpg" alt="QR Code">
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-      
-  </section>
-   <br>
-     <br>  
+
+    <%-- JavaScript code --%>
+    <script>
+      function showQR(id) {
+        // Generate a unique payment ID
+        var paymentId = '<%= java.util.UUID.randomUUID().toString() %>';
+
+        // Construct the payment URL with the payment ID and dish ID
+        var paymentURL = 'payment.jsp?paymentId=' + paymentId + '&dishId=' + id;
+
+        // Set the src attribute of the QR code image to the payment URL
+        var qrCodeImage = document.getElementById('qrCodeImage');
+        qrCodeImage.src = paymentURL;
+
+        // Open the payment modal dialog
+        $('#paymentModal').modal('show');
+      }
+    </script>
+
+  <%-- If the user is not logged in, display an error message --%>
+  <% } else { %>
+    <p>User not logged in. Please log in to view the details.</p>
+  <% } %>
+
   <!-- footer section -->
   <%@ include file="footer.jsp" %>
 

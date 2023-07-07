@@ -116,4 +116,40 @@ public List<menuAdd> getOneDish(String email) throws ClassNotFoundException, SQL
 }
 
 	
+public int sum(menuAdd u) throws ClassNotFoundException, SQLException {
+	   con = getconnect();
+	   PreparedStatement ps = con.prepareStatement("INSERT INTO menuadd(email, Dishname, image, Description, Price) VALUES (?, ?, ?, ?, ?)");
+	   ps.setString(1, u.getemail());
+	   ps.setString(2, u.getDishname());
+	   ps.setString(3, u.getImage());
+	   ps.setString(4, u.getDescription());
+
+	   // Calculate the total price by adding the given price to the existing sum
+	   int existingPrice = getTotalPrice(null);
+	   int totalPrice = existingPrice + u.getPrice();
+	   ps.setInt(5, totalPrice);
+
+	   int m1 = ps.executeUpdate();
+	   con.close();
+	   return m1;
+	}
+public int getTotalPrice(String email) throws ClassNotFoundException, SQLException {
+	   con = getconnect();
+	   Statement stmt = con.createStatement();
+	   ResultSet rs = stmt.executeQuery("SELECT SUM(Price) AS total FROM menuadd WHERE Email = '" + email + "'");
+
+	   int totalPrice = 0;
+	   if (rs.next()) {
+	      totalPrice = rs.getInt("total");
+	   }
+	   
+	   rs.close();
+	   stmt.close();
+	   con.close();
+	   
+	   return totalPrice;
+	}
+
+
+
 }

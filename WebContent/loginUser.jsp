@@ -34,7 +34,7 @@
         response.sendRedirect("Usermenu.jsp");
     } else {
         out.println("Wrong Name and Password!");
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("registerUser.jsp");
     }
 %>
 </body>
