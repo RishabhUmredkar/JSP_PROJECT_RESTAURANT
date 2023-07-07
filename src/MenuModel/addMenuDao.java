@@ -34,13 +34,12 @@ public class addMenuDao {
 public int insertMenuAdd(menuAdd u) throws ClassNotFoundException, SQLException {
 	   // String sql = "INSERT INTO menu(Dishname, image, Description, Price) VALUES (?, ?, ?, ?)";
 	    con = getconnect();
-	    PreparedStatement ps = con.prepareStatement( "INSERT INTO menuadd(id,email,Dishname, image, Description,Price) VALUES (?,?,?,?,?,?)");
-	    ps.setInt(1, u.getId());
-	    ps.setString(2, u.getemail());
-	    ps.setString(3, u.getDishname());
-	    ps.setString(4, u.getImage());
-	    ps.setString(5, u.getDescription());
-	    ps.setInt(6, u.getPrice());
+	    PreparedStatement ps = con.prepareStatement( "INSERT INTO menuadd(email,Dishname, image, Description,Price) VALUES (?,?,?,?,?)");
+	    ps.setString(1, u.getemail());
+	    ps.setString(2, u.getDishname());
+	    ps.setString(3, u.getImage());
+	    ps.setString(4, u.getDescription());
+	    ps.setInt(5, u.getPrice());
 
 		int m1 =ps.executeUpdate();
 		con.close();

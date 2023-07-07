@@ -46,7 +46,7 @@ int Price =  m.getPrice();
 String Description =  m.getDescription(); %>
 
 <% 
-menuAdd u =new menuAdd(id,email,Dishname,image,Description,Price);
+menuAdd u =new menuAdd(email,Dishname,image,Description,Price);
 addMenuDao ud = new addMenuDao();
 ud.insertMenuAdd(u);
 if(ud!=null)
