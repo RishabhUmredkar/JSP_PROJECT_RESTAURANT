@@ -5,15 +5,8 @@
     
     <%@page import="MenuModel.addMenuDao"%>
 <%@page import="MenuModel.menuAdd"%>
-<%@page import="MenuModel.AddImage"%>
-    <%@page import="UserModel.User"%>
-<%@page import="UserModel.UserDao"%>
-<%@page import="MenuModel.AddImage"%>
 <%@ page import="java.util.List" %>
  
-    <%@page import="UserModel.User"%>
-<%@page import="UserModel.UserDao"%>
-<%@ page import="java.util.List" %>
 
 <html>
 
@@ -29,7 +22,86 @@
   <meta name="author" content="" />
   <link rel="shortcut icon" href="images/favicon.png" type="">
 <%@ include file="AllCss.jsp" %>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body.custom-body {
+      background-color: #f8f9fa;
+    }
 
+    .custom-container {
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .custom-heading {
+      margin-bottom: 20px;
+    }
+
+    .custom-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .custom-th,
+    .custom-td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #e9ecef;
+    }
+
+    .custom-thead {
+      background-color: #343a40;
+      color: #fff;
+    }
+
+    .custom-tbody tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+
+    .custom-actions {
+      white-space: nowrap;
+    }
+
+    .custom-actions a {
+      margin-right: 5px;
+    }
+
+    .custom-btn-fancy {
+      background-color: #ffbe33;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+    }
+
+    .custom-btn-fancy:hover {
+      transform: scale(1.1);
+    }
+
+    .custom-btn-danger {
+      background-color: #343a40;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+    }
+
+    .custom-btn-danger:hover {
+      background-color: #343a40;
+      transform: scale(1.1);
+    }
+  </style>
   <title> Feane </title>
 
 </head>
@@ -51,7 +123,7 @@
 <br><br>
 
 
-
+<%-- 
 <% 
 Cookie cookies[] = request.getCookies();
 if (cookies != null) {
@@ -70,7 +142,7 @@ int id = Integer.parseInt(request.getParameter("id"));
 
 
 			 if(u!=null){%>
-			 
+			  --%>
 			 
   <!-- food section -->
 <section class="food_section layout_padding">
@@ -86,14 +158,10 @@ out.print(email);
 
 
 
-			menuAdd u = null;
-			int a=0;
-			
-				u = new addMenuDao().getOneDish(email);
-
-
-			 if(u!=null){%>
-			 
+List<menuAdd> le=null;
+	
+	le  = new addMenuDao().getOneDish(email);%>
+	 
   <!-- book section -->
 <body class="custom-body">
   <div class="container">
@@ -109,8 +177,7 @@ out.print(email);
             <th class="custom-th">Delete </th>
           </tr>
         </thead>
-        					<%for(menuAdd e:le){%>
-        
+        <%for(menuAdd e:le){%>
         <tbody> <tr>
      <td class="custom-td"><%= e.getId() %></td>
     <td class="custom-td"><%= e.getemail()%></td>
@@ -122,20 +189,19 @@ out.print(email);
    
     </td>
   </tr>
-  <% } %>
   
-        </tbody>
+        </tbody> 
+          <%} %>
       </table>
     </div>
   </div>
       
   </section>
    <br>
-     <br>  <%}}}}} %>
-     
+     <br>  
   <!-- footer section -->
   <%@ include file="footer.jsp" %>
-  
+
   <!-- footer section -->
 
   <!-- jQery -->  <%@ include file="AllCss.jsp" %>

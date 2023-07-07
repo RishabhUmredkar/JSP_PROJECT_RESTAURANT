@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import MenuModel.menuAdd;
+import UserModel.User;
 
 public class addMenuDao {
 
@@ -81,24 +82,39 @@ public int delete(int id) throws ClassNotFoundException, SQLException {
 }
 
 
+/*
+public menuAdd getOneDish(String email) throws ClassNotFoundException, SQLException {
+    String sql = "SELECT * FROM menuAdd WHERE email=?";
+	Connection con = getconnect();
+	 PreparedStatement ps = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
-public Menu getOneDish(String email) throws ClassNotFoundException, SQLException {
-    Connection con = getconnect();
-    PreparedStatement ps = con.prepareStatement("SELECT * FROM menu WHERE email=?");
-    Menu m = new Menu();
-    ps.setString(1, email);
-    ResultSet rs = ps.executeQuery();
+	 ps.setString(1, email);
+
+	ResultSet rs = ps.executeQuery();
+	rs.absolute(1);
+	System.out.println("Value of a ="+rs.getString(2));
+
+	menuAdd e=new menuAdd(rs.getInt(1),rs.getString(2), rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6));
+	return e;
+}*/
+
+
+public List<menuAdd> getOneDish(String email) throws ClassNotFoundException, SQLException {
+    String sql = "SELECT * FROM menuadd WHERE email = ?";
+    con = getconnect();
+    PreparedStatement pstmt = con.prepareStatement(sql);
+    pstmt.setString(1, email);
+    ResultSet rs = pstmt.executeQuery();
+    
+    List<menuAdd> le = new ArrayList<menuAdd>();
+    
     while (rs.next()) {
-        m.setId(rs.getInt(1));
-        m.setDishname(rs.getString(2));
-        m.setImage(rs.getString(3));
-        m.setDiscription(rs.getString(4));
-        m.setPrice(rs.getInt(5));
+        menuAdd e = new menuAdd(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6));
+        le.add(e);
     }
-
-    return m;
+    
+    return le;
 }
-
 
 	
 }
