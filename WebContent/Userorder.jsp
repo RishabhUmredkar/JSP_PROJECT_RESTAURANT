@@ -106,7 +106,7 @@
     background-color: green;
   }
   </style>
-  <title> Feane </title>
+  <title> Hotel </title>
 
 </head>
 
@@ -138,10 +138,10 @@
     <section class="food_section layout_padding">
       <div class="container">
         <div class="heading_container heading_center">
-          <h2>Our Menu</h2>
+          <h2>Billing....</h2>
         </div>
         <div class="custom-container">
-          <h2 class="custom-heading">User Details</h2>
+          <h2 class="custom-heading">User Bill Details</h2>
           <table class="custom-table">
             <thead class="custom-thead">
               <tr>
