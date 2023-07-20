@@ -5,7 +5,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 
-
 <!-- Basic -->
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -18,8 +17,7 @@
 <link rel="shortcut icon" href="images/favicon.png" type="">
 
 <%@ include file="AllCss.jsp" %>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 </head>
 <body>
@@ -35,19 +33,19 @@
       </a>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class=""> </span>
+        <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav  mx-auto ">
-          
+        <ul class="navbar-nav mx-auto">
+
           <li class="nav-item">
             <a class="nav-link" href="menu.jsp">Menu</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="about.jsp">About</a>
           </li>
-            <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" href="viewUser.jsp">User</a>
           </li>
           <li class="nav-item">
@@ -86,7 +84,7 @@
             </svg>
           </a>
           <form class="form-inline">
-            <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+            <button class="btn my-2 my-sm-0 nav_search-btn" type="submit">
               <i class="fa fa-search" aria-hidden="true"></i>
             </button>
           </form>
@@ -100,17 +98,6 @@
 </header>
 
 <!-- Add your additional code below this line -->
-
-<!-- bootstrap core js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
-<!-- Optional JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js" integrity="sha512-jv5xXrrZ3hZUy6P2yMAWse6fPw1r4vQff5hl7Pp9qNC4zTJRDcxwUh6mCRaj6ulH+97gWyTtCgavziQozZKmhw==" crossorigin="anonymous"></script>
-<!-- Custom JS -->
-<script src="js/custom.js"></script>
 
 <!-- bootstrap core js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
