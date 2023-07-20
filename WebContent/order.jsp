@@ -1,15 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%><!DOCTYPE html>
-    <%@page import="UserModel.User"%>
-    <%@page import="UserModel.UserDao"%>
-    <%@page import="MenuModel.menuAdd"%>
-    <%@page import="MenuModel.Menu"%>
-   <%@page import="MenuModel.AddImage"%>
-   <%@page import="MenuModel.menuAdd"%>
-   
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<%@page import="java.util.List"%>
+<%@page import="MenuModel.menuAdd"%>
 <%@page import="MenuModel.MenuDao"%>
 <%@page import="MenuModel.addMenuDao"%>
-<%@ page import="java.util.List" %>
+<%@page import="UserModel.User"%>
+<%@page import="UserModel.UserDao"%>
+<%@page import="MenuModel.AddImage"%>
+<%@page import="MenuModel.menuAdd"%>
+<%@page import="MenuModel.Menu"%>
+<%@page import="java.util.List" %>
 <html>
 <head>
   <!-- Basic -->
@@ -22,12 +22,11 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
   <link rel="shortcut icon" href="images/favicon.png" type="">
-<%@ include file="AllCss.jsp" %>
-
+  <%@ include file="AllCss.jsp" %>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <style>
-    body.custom-body {
+body.custom-body {
       background-color: #f8f9fa;
     }
 
@@ -103,144 +102,110 @@
     .custom-btn-danger:hover {
       background-color: #343a40;
       transform: scale(1.1);
-    }
-  </style>
+    }  </style>
   <title> Feane </title>
-
 </head>
 
 <body class="sub_page">
-
   <div class="hero_area">
     <div class="bg-box">
       <img src="images/hero-bg.jpg" alt="">
     </div>
     <!-- header section strats -->
-<%@ include file="navbar.jsp" %>
-
+    <%@ include file="navbar.jsp" %>
     <!-- end header section -->
   </div>
-<br><br>
+  <br><br>
 
-<%	
-/* 
-Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "abc123");
+  <%	
+  Cookie c[] = request.getCookies();
+  if (c != null) {
+    String email = c[0].getValue();
+    if (!email.equals("") || email != null) {
+      int rowsPerPage = 5;
+      int currentPage = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
 
-// Create a statement
-Statement statement = connection.createStatement();
+      List<menuAdd> le = null;
+      le = new addMenuDao().getAllData();
 
-// Set the pagination parameters
-int pageSize = 10; // Number of records per page
-int currentPage = 1; // Current page number
+      int totalRows = le.size();
+      int totalPages = (int) Math.ceil((double) totalRows / rowsPerPage);
 
-// Calculate the offset for pagination
-int offset = (currentPage - 1) * pageSize;
+      int startIdx = (currentPage - 1) * rowsPerPage;
+      int endIdx = Math.min(startIdx + rowsPerPage, totalRows);
 
-// Execute the query with pagination
-String query = "SELECT * FROM menuadd LIMIT " + offset + ", " + pageSize;
-ResultSet resultSet = statement.executeQuery(query);
-
-// Get the column count by using ResultSetMetaData
-ResultSetMetaData metaData = resultSet.getMetaData();
-int columnCount = metaData.getColumnCount();
-
-// Output the column count
-System.out.println("Number of columns: " + columnCount);
-
-// Process the result set
-while (resultSet.next()) {
-    // Retrieve the column values
-    for (int i = 1; i <= columnCount; i++) {
-        System.out.print(resultSet.getString(i) + "\t");
-    }
-    System.out.println();
-}
-
-// Clean up resources
-resultSet.close();
-statement.close();
-connection.close();
-
- */
-Cookie c[] = request.getCookies();
-if(c!=null)
-{
-
-	String email = c[0].getValue();
-
-	
-	if(!email.equals("")|| email!=null)
-	{
-
-    			 List<menuAdd> le=null;
-    				
-					
-					
-					le=new addMenuDao().getAllData();%>
-					
-					
-
-					
+      List<menuAdd> currentPageItems = le.subList(startIdx, endIdx);
+  %>
   <!-- book section -->
-<body class="custom-body">
-  <div class="container">
-    <div class="custom-container">
-      <h2 class="custom-heading">User Details</h2>
-      <table class="custom-table">
-        <thead class="custom-thead">
-          <tr>
-            <th class="custom-th">ID</th>
-            <th class="custom-th">Email</th>
-            <th class="custom-th">Dish Name</th>
-            <th class="custom-th">Price</th>
-            <th class="custom-th">Delete </th>
-          </tr>
-        </thead>
-        					<%for(menuAdd e:le){%>
-        
-        <tbody> <tr>
-     <td class="custom-td"><%= e.getId() %></td>
-    <td class="custom-td"><%= e.getemail()%></td>
-    <td class="custom-td"><%= e.getDishname()%></td>
-    <td class="custom-td"><%= e.getPrice() %></td>
-    <td class="custom-actions">
-      <a href="deleteDish.jsp?id=<%=e.getId() %>" class="custom-btn-fancy">Delete</a>
-
-   
-    </td>
-  </tr>
-  <% } %>
-  
-        </tbody>
-      </table>
+  <body class="custom-body">
+    <div class="container">
+      <div class="custom-container">
+        <h2 class="custom-heading">User Details</h2>
+        <div class="table-responsive">
+          <table class="table custom-table">
+            <thead class="custom-thead">
+              <tr>
+                <th class="custom-th">ID</th>
+                <th class="custom-th">Email</th>
+                <th class="custom-th">Dish Name</th>
+                <th class="custom-th">Price</th>
+                <th class="custom-th">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for (menuAdd e : currentPageItems) { %>
+              <tr>
+                <td class="custom-td"><%= e.getId() %></td>
+                <td class="custom-td"><%= e.getemail() %></td>
+                <td class="custom-td"><%= e.getDishname() %></td>
+                <td class="custom-td"><%= e.getPrice() %></td>
+                <td class="custom-actions">
+                  <a href="deleteDish.jsp?id=<%= e.getId() %>" class="custom-btn-fancy">Delete</a>
+                </td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-  </div>
-      
-  </section>
-   <br>
-     <br>      
-         <%  }}else{%>
-            		
-            		<%
-response.sendRedirect("index.jsp");
-         }
-%>
+  </body>
+  <br><br><nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center">
+    <% if (currentPage > 1) { %>
+    <li class="page-item">
+      <a class="page-link" href="?page=<%= currentPage - 1 %>" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <% } %>
 
+    <% for (int i = 1; i <= totalPages; i++) { %>
+    <li class="page-item <%= (i == currentPage) ? "active" : "" %>">
+      <a class="page-link" href="?page=<%= i %>"><%= i %></a>
+    </li>
+    <% } %>
 
-    
+    <% if (currentPage < totalPages) { %>
+    <li class="page-item">
+      <a class="page-link" href="?page=<%= currentPage + 1 %>" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    <% } %>
+  </ul>
+</nav>
 
-  <!-- end book section -->
-
+  <%  } else { %>
+  <% response.sendRedirect("index.jsp"); } %>
+  <% } else { %>
+  <% response.sendRedirect("index.jsp"); } %>
+  <!-- ... Your existing code ... -->
   <!-- footer section -->
-<%@ include file="footer.jsp" %>
-
+  <%@ include file="footer.jsp" %>
   <!-- footer section -->
-
   <!-- jQery -->
   <%@ include file="AllCss.jsp" %>
-  
   <!-- End Google Map -->
-
 </body>
-
 </html>
