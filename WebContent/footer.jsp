@@ -43,7 +43,7 @@
         <div class="col-md-4 footer-col">
           <div class="footer_detail">
             <a href="" class="footer-logo">
-              Feane
+              Saoji Restro....
             </a>
             <p>
               Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
@@ -81,7 +81,7 @@
       <div class="footer-info">
         <p>
           &copy; <span id="displayYear"></span> All Rights Reserved By
-          <a href="https://html.design/">Free Html Templates</a><br><br>
+          <a href="https://github.com/RishabhUmredkar">Rishabh</a><br><br>
           &copy; <span id="displayYear"></span> Designed By
           <a href="https://github.com/RishabhUmredkar" target="_blank">Rishabh</a>
         </p>
