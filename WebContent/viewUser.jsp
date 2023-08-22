@@ -162,7 +162,7 @@
 
       // Pagination
       int currentPage = 1;
-      int recordsPerPage = 1;
+      int recordsPerPage = 5;
       if (request.getParameter("page") != null) {
         currentPage = Integer.parseInt(request.getParameter("page"));
       }

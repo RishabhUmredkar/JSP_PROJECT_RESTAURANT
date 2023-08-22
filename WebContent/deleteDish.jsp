@@ -1,5 +1,4 @@
-
-    <%@page import="MenuModel.menuAdd"%>
+<%@page import="MenuModel.menuAdd"%>
 <%@page import="MenuModel.addMenuDao"%>
 <%@ page import="java.util.List" %>
 

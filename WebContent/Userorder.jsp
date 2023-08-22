@@ -188,7 +188,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-body">
-<img id="qrCodeImage" src="/JSP_PROJECT_RESTAURANT2.0/WebContent/images/QR Code.jpg" alt="QR Code">
+<img id="qrCodeImage" src="\JSP_PROJECT_RESTAURANT2.0\WebContent\images\chinese.jpg" alt="QR Code">
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%><!DOCTYPE html>
+    pageEncoding="ISO-8859-1"%>
     
     <%@page import="MenuModel.Menu"%>
 <%@page import="MenuModel.MenuDao"%>
@@ -65,51 +65,47 @@
 				
 				%>
 				
-			
-      <div class="filters-content">
-        <div class="row grid">
-        <%for(Menu e:le){%>
-			
-          <div class="col-sm-6 col-lg-4 all pizza">
-            <div class="box">
-              <div>
-          
 		
-	
-                <div class="img-box">
-                  <img src="images/<%=e.getImage()%>" alt="Check This out">
+    <div class="filters-content">
+        <div class="row grid">
+            <% for (Menu e : le) { %>
+                <div class="col-sm-6 col-lg-4 all pizza">
+                    <div class="box">
+                        <div>
+                            <div class="img-box">
+                                <img src="images/<%= e.getImage() %>" alt="Check This out">
+                            </div>
+                            <div class="detail-box">
+                                <h5><%= e.getId() %>. <%= e.getDishname() %></h5>
+                                <p><%= e.getDescription() %></p>
+                                <div class="options">
+                                    <h6>Rs. <%= e.getPrice() %></h6>
+                                    <a href="insertMenu.jsp?id=<%= e.getId() %>"
+                                       class="add-to-cart-button"
+                                       onclick="addToCartClicked(this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                            <path fill="currentColor" d="M12 5V19M5 12H19" stroke="currentColor"
+                                                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="detail-box">
-                  <h5>
-					<%= e.getId() %>.  <%= e.getDishname() %>    </h5>
-                  <p>	<%= e.getDescription() %>
-                  </p>
-                  <div class="options">
-                    <h6>
-                      Rs. <%= e.getPrice() %>
-                    </h6>
-                    <a href="insertMenu.jsp?id=<%=e.getId() %>">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="color: white; font-weight: bold; font-size: 24px;">
-  <path fill="currentColor" d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-                    <% }
-%>
-
-            </div>
-          </div>
+            <% } %>
+        </div>
+    </div>
         </div>
       </div>
    
     </div>
   </section>
+     <script>
+        function addToCartClicked(button) {
+            button.classList.add('added-to-cart');
+        }
+    </script>
 
   <!-- end food section -->
 
